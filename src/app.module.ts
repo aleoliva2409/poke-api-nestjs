@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { PokemonsModule } from './pokemons/pokemons.module';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PokemonsModule } from './pokemons/pokemons.module';
-import config from './config'
+import config from './config';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import config from './config'
       load: [config],
       envFilePath: '.env',
     }),
+    // MongooseModule.forRoot('mongodb://localhost/nest'), //TODO: link de la db mongoAtlas
     PokemonsModule,
   ],
   controllers: [AppController],
